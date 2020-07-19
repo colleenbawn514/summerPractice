@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.library.web.screens.library">
+    <data>
+        <instance id="libraryDc"
+                  class="com.company.library.entity.Library"
+                  view="library-view">
+            <loader/>
+            <collection id="bookInLibraryDc" property="bookInLibrary"/>
+            <collection id="readersDc" property="readers"/>
+            <collection id="employeesDc" property="employees"/>
+        </instance>
+    </data>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="libraryDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <groupBox id="bookInLibraryBox" caption="msg://com.company.library.entity/Library.bookInLibrary">
+            <table id="bookInLibraryTable" dataContainer="bookInLibraryDc" width="100%" height="200px">
+                <columns>
+                    <column id="book"/>
+                    <column id="count"/>
+                </columns>
+            </table>
+        </groupBox>
+        <groupBox id="employeesBox" caption="msg://com.company.library.entity/Library.employees">
+            <table id="employeesTable" dataContainer="employeesDc" width="100%" height="200px">
+                <columns>
+                    <column id="fullName"/>
+                </columns>
+            </table>
+        </groupBox>
+        <groupBox id="readersBox" caption="msg://com.company.library.entity/Library.readers">
+            <table id="readersTable" dataContainer="readersDc" width="100%" height="200px">
+                <columns>
+                </columns>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

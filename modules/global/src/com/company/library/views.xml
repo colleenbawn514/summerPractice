@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="library_Library" name="library-view" extends="_local">
+        <property name="bookInLibrary" view="_minimal">
+            <property name="book" view="_minimal"/>
+            <property name="count"/>
+        </property>
+        <property name="employees" view="_minimal"/>
+        <property name="readers" view="_minimal"/>
+    </view>
+    <view entity="library_Employee" name="employee-view" extends="_local">
+        <property name="forms" view="_minimal"/>
+        <property name="library" view="_minimal"/>
+    </view>
+    <view entity="library_Book" name="book-view" extends="_local">
+        <property name="forms" view="_minimal">
+            <property name="startDate"/>
+            <property name="employee" view="_minimal"/>
+            <property name="endDate"/>
+        </property>
+        <property name="bookInLibrary" view="_minimal">
+            <property name="count"/>
+            <property name="library" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="library_Reader" name="reader-view" extends="_local">
+        <property name="forms" view="_minimal">
+            <property name="startDate"/>
+            <property name="book" view="_minimal"/>
+            <property name="endDate"/>
+        </property>
+    </view>
+    <view entity="library_Form" name="form-view" extends="_local">
+        <property name="reader" view="_minimal"/>
+        <property name="book" view="_minimal"/>
+        <property name="employee" view="_minimal"/>
+    </view>
+</views>

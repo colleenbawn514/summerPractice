@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.library.web.screens.form">
+    <data>
+        <instance id="formDc"
+                  class="com.company.library.entity.Form"
+                  view="form-view">
+            <loader id="formsDl"/>
+        </instance>
+        <instance id="employeesDc"
+                  class="com.company.library.entity.Employee"
+                  view="_local"/>
+    </data>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="formDc">
+            <column width="250px">
+                <pickerField id="readerField" property="reader"/>
+                <pickerField id="bookField" property="book"/>
+                <dateField id="startDateField" property="startDate"/>
+                <pickerField id="employeeField" property="employee">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="saveButton" action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+
+        </hbox>
+    </layout>
+</window>

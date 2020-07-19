@@ -1,0 +1,2 @@
+alter table LIBRARY_LIBRARY_READER_LINK add constraint FK_LIBREA_ON_READER foreign key (READER_ID) references LIBRARY_READER(ID);
+alter table LIBRARY_LIBRARY_READER_LINK add constraint FK_LIBREA_ON_LIBRARY foreign key (LIBRARY_ID) references LIBRARY_LIBRARY(ID);

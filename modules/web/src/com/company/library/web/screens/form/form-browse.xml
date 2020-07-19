@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="formsTable"
+        messagesPack="com.company.library.web.screens.form">
+    <data readOnly="true">
+        <collection id="formsDc"
+                    class="com.company.library.entity.Form"
+                    view="form-view">
+            <loader id="formsDl">
+                <query>
+                    <![CDATA[select e from library_Form e where e.endDate is null ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="formsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="formsTable"
+                dataLoader="formsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="formsTable"
+                    width="100%"
+                    dataContainer="formsDc">
+            <actions>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="reader"/>
+                <column id="book"/>
+                <column id="startDate"/>
+                <column id="endDate"/>
+                <column id="employee" />
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="formsTable.create"/>
+                <button id="editBtn" action="formsTable.edit"/>
+                <button id="removeBtn" action="formsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

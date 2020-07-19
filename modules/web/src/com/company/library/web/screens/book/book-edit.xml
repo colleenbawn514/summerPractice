@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.library.web.screens.book">
+    <data>
+        <instance id="bookDc"
+                  class="com.company.library.entity.Book"
+                  view="book-view">
+            <loader/>
+            <collection id="bookInLibraryDc" property="bookInLibrary"/>
+            <collection id="formsDc" property="forms"/>
+        </instance>
+    </data>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="bookDc">
+            <column width="250px">
+                <textField id="authorField" property="author" caption="Author"/>
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <groupBox id="bookInLibraryBox" caption="msg://com.company.library.entity/Book.bookInLibrary">
+            <table id="bookInLibraryTable" dataContainer="bookInLibraryDc" width="100%" height="200px">
+                <columns>
+                    <column id="library.name" caption="Library name"/>
+                    <column id="count"/>
+                </columns>
+            </table>
+        </groupBox>
+        <groupBox id="formsBox" caption="msg://com.company.library.entity/Book.forms">
+            <table id="formsTable" dataContainer="formsDc" width="100%" height="200px">
+                <columns>
+                    <column id="reader"/>
+                    <column id="startDate"/>
+                    <column id="endDate"/>
+                    <column id="employee"/>
+                </columns>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

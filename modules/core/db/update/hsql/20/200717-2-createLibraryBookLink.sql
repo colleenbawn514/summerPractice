@@ -1,0 +1,2 @@
+alter table LIBRARY_LIBRARY_BOOK_LINK add constraint FK_LIBBOO_ON_LIBRARY foreign key (LIBRARY_ID) references LIBRARY_LIBRARY(ID);
+alter table LIBRARY_LIBRARY_BOOK_LINK add constraint FK_LIBBOO_ON_BOOK foreign key (BOOK_ID) references LIBRARY_BOOK(ID);

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.library.web.screens.reader">
+    <data>
+        <instance id="readerDc"
+                  class="com.company.library.entity.Reader"
+                  view="reader-view">
+            <loader/>
+            <collection id="formsDc" property="forms"/>
+        </instance>
+    </data>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="readerDc">
+            <column width="250px">
+                <textField id="fullNameField" property="fullName"/>
+            </column>
+        </form>
+        <groupBox id="formsBox" caption="msg://com.company.library.entity/Reader.forms">
+            <table id="formsTable" dataContainer="formsDc" width="100%" height="200px">
+                <columns>
+                    <column id="book"/>
+                    <column id="startDate"/>
+                    <column id="endDate"/>
+                </columns>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

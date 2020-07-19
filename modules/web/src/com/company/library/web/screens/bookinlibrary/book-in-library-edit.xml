@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.library.web.screens.bookinlibrary">
+    <data>
+        <instance id="bookInLibraryDc"
+                  class="com.company.library.entity.BookInLibrary"
+        >
+            <view extends="_local">
+                <property name="book" view="_minimal"/>
+                <property name="library" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="bookInLibraryDc">
+            <column width="250px">
+                <pickerField id="bookField" property="book"/>
+                <textField id="countField" property="count"/>
+                <pickerField id="libraryField" property="library"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="readersTable"
+        messagesPack="com.company.library.web.screens.reader">
+    <data readOnly="true">
+        <collection id="readersDc"
+                    class="com.company.library.entity.Reader"
+                    view="reader-view">
+            <loader id="readersDl">
+                <query>
+                    <![CDATA[select e from library_Reader e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="readersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="readersTable"
+                dataLoader="readersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="readersTable"
+                    width="100%"
+                    dataContainer="readersDc">
+            <actions>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="fullName" caption="Reader name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="readersTable.create"/>
+                <button id="editBtn" action="readersTable.edit"/>
+                <button id="removeBtn" action="readersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

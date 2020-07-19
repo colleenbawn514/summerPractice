@@ -1,0 +1,3 @@
+alter table LIBRARY_LIBRARY alter column LIBRARY_SISTEM_ID rename to LIBRARY_SISTEM_ID__U90420 ^
+alter table LIBRARY_LIBRARY alter column LIBRARY_SISTEM_ID__U90420 set null ;
+drop index IDX_LIBRARY_LIBRARY_ON_LIBRARY_SISTEM ;
